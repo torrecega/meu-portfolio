@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Vitta | Estética e fisioterapia</title>
+<meta name="description" content="Tratamentos estéticos e fisioterapêuticos personalizados. Agende sua avaliação na Clínica Vitta.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23C1613F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F8F5; --surface:#FFFFFF; --ink:#232D25; --ink-soft:#5F6B60; --border:#E4E9E1;
+    --accent:#C1613F; --accent-dark:#A44F32; --accent-soft:#F3E4DC; --sage:#7C9179;
+    --radius:22px; --font-d:'Poppins',sans-serif; --font-b:'Nunito Sans',sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-b);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--font-d);font-weight:600;letter-spacing:-0.01em;line-height:1.18}
+  .container{max-width:1140px;margin-inline:auto;padding-inline:1.25rem}
+  @media(min-width:768px){.container{padding-inline:2rem}}
+  section{padding-block:clamp(3.5rem,7vw,6rem)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:700;font-size:.92rem;background:var(--accent);color:#fff;transition:background .25s var(--ease),transform .3s var(--ease)}
+  .btn:hover{background:var(--accent-dark)}
+  .btn:active{transform:scale(.97)}
+  .btn-outline{background:transparent;border:1px solid var(--border);color:var(--ink)}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent-dark)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(246,248,245,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{font-family:var(--font-d);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:.5rem}
+  .logo span.dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+  nav.main{display:none;gap:2rem;font-weight:600;font-size:.92rem;color:var(--ink-soft)}
+  nav.main a:hover{color:var(--ink)}
+  @media(min-width:860px){nav.main{display:flex}}
+  .nav-cta{display:none}
+  @media(min-width:860px){.nav-cta{display:inline-flex}}
+  #menu-toggle{display:none}
+  .burger{display:flex;flex-direction:column;gap:5px;width:26px;cursor:pointer}
+  .burger span{height:2px;background:var(--ink);border-radius:2px}
+  @media(min-width:860px){.burger{display:none}}
+  .mobile-menu{display:none;flex-direction:column;border-top:1px solid var(--border)}
+  .mobile-menu a{padding:1rem 1.25rem;border-bottom:1px solid var(--border);font-weight:600}
+  #menu-toggle:checked ~ .mobile-menu{display:flex}
+  @media(min-width:860px){.mobile-menu{display:none !important}}
+
+  .hero{padding-top:clamp(3rem,7vw,5rem)}
+  .hero-grid{display:grid;gap:2.5rem;align-items:center}
+  @media(min-width:960px){.hero-grid{grid-template-columns:1.1fr 0.9fr;gap:3rem}}
+  .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent-dark);background:var(--accent-soft);padding:.4rem .9rem;border-radius:999px;margin-bottom:1.25rem}
+  .hero h1{font-size:clamp(1.9rem,3vw,2.3rem);max-width:22ch;animation:fadeUp .7s var(--ease) both}
+  .hero p{margin-top:1.1rem;color:var(--ink-soft);font-size:1.1rem;max-width:42ch;animation:fadeUp .7s var(--ease) .1s both}
+  .hero-actions{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .7s var(--ease) .2s both}
+  .hero-img{border-radius:var(--radius);overflow:hidden;aspect-ratio:5/4;box-shadow:0 30px 70px -32px rgba(35,45,37,.3);animation:fadeUp .8s var(--ease) .15s both}
+  .hero-img img,.hero-img svg{width:100%;height:100%;object-fit:cover;display:block}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+  .services-head{max-width:560px;margin-bottom:2.75rem}
+  .services-head span.kicker{color:var(--accent-dark);font-weight:700;font-size:.85rem}
+  .services-head h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-top:.5rem}
+  .services-grid{display:grid;gap:1.5rem;grid-template-columns:1fr}
+  @media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+  .service-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .service-card:hover{transform:translateY(-5px);box-shadow:0 20px 45px -28px rgba(35,45,37,.3)}
+  .service-icon{width:46px;height:46px;border-radius:14px;background:var(--accent-soft);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+  .service-card h3{font-size:1.1rem;margin-bottom:.6rem}
+  .service-card p{color:var(--ink-soft);font-size:.94rem}
+
+  .strip{background:var(--surface);border-block:1px solid var(--border)}
+  .strip-grid{display:grid;gap:1.75rem;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:768px){.strip-grid{grid-template-columns:repeat(4,1fr)}}
+  .strip-item{display:flex;gap:.75rem;align-items:flex-start}
+  .strip-item svg{color:var(--accent);flex-shrink:0;margin-top:2px}
+  .strip-item strong{display:block;font-size:.92rem}
+  .strip-item span{color:var(--ink-soft);font-size:.85rem}
+
+  .cta-band{background:var(--sage);color:#fff;border-radius:28px;padding:clamp(2.5rem,6vw,4rem);text-align:center;margin-inline:1.25rem}
+  @media(min-width:768px){.cta-band{margin-inline:2rem}}
+  .cta-band h2{font-size:clamp(1.6rem,3vw,2.2rem);color:#fff}
+  .cta-band p{margin-top:.75rem;color:rgba(255,255,255,.85)}
+  .cta-band .btn{margin-top:1.75rem;background:#fff;color:var(--accent-dark)}
+  .cta-band .btn:hover{background:#F4F1EC}
+
+  footer{padding-block:2.5rem;color:var(--ink-soft);font-size:.88rem}
+  .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+  .footer-inner strong{color:var(--ink)}
+  .back-link{display:inline-block;margin-top:1rem;font-weight:700;color:var(--accent-dark)}
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important} }
+</style>
+</head>
+<body>
+
+<header>
+  <input type="checkbox" id="menu-toggle">
+  <div class="container header-inner">
+    <a class="logo" href="#top"><span class="dot"></span>Clínica Vitta</a>
+    <nav class="main">
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn nav-cta" href="https://wa.me/5511987650004?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
+    <label class="burger" for="menu-toggle"><span></span><span></span><span></span></label>
+  </div>
+  <div class="mobile-menu">
+    <a href="#tratamentos">Tratamentos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+    <a href="https://wa.me/5511987650004?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Estética &amp; Fisioterapia</span>
+      <h1>Cuidado com o corpo, no seu tempo.</h1>
+      <p>Tratamentos estéticos e fisioterapêuticos personalizados, em um espaço pensado para o seu bem-estar.</p>
+      <div class="hero-actions">
+        <a class="btn" href="https://wa.me/5511987650004?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
+        <a class="btn btn-outline" href="#tratamentos">Ver tratamentos</a>
+      </div>
+    </div>
+    <div class="hero-img" role="img" aria-label="Ilustração representando bem-estar e cuidado">
+      <svg viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="vittaGrad" cx="30%" cy="24%" r="82%">
+            <stop offset="0%" stop-color="#EFE3DA"/>
+            <stop offset="100%" stop-color="#F6F8F5"/>
+          </radialGradient>
+        </defs>
+        <rect width="600" height="480" fill="url(#vittaGrad)"/>
+        <circle cx="480" cy="370" r="150" fill="#7C9179" opacity=".13"/>
+        <circle cx="100" cy="90" r="80" fill="#C1613F" opacity=".12"/>
+        <circle cx="300" cy="240" r="104" fill="#FFFFFF"/>
+        <path d="M300 190c40 0 66 34 58 78-6 34-58 62-58 62s-52-28-58-62c-8-44 18-78 58-78Z" fill="none" stroke="#7C9179" stroke-width="7" stroke-linejoin="round"/>
+        <path d="M300 200v112" stroke="#7C9179" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="tratamentos">
+  <div class="container">
+    <div class="services-head">
+      <span class="kicker">TRATAMENTOS</span>
+      <h2>Um plano para cada objetivo</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12h4l2-5 4 10 2-5h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Fisioterapia Ortopédica</h3>
+        <p>Reabilitação e alívio de dores, com plano individual de exercícios.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M9 12.3l2 2 4-4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Estética Facial</h3>
+        <p>Protocolos de limpeza, hidratação e rejuvenescimento sob medida.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 18.5c0-3.6 3.6-5 8-5s8 1.4 8 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="7.8" r="3.3" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Massoterapia</h3>
+        <p>Técnicas para alívio de tensão e relaxamento profundo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip" id="sobre">
+  <div class="container strip-grid">
+    <div class="strip-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 18.5c0-3.6 3.6-5 8-5s8 1.4 8 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="7.8" r="3.3" stroke="currentColor" stroke-width="1.7"/></svg>
+      <div><strong>Profissionais qualificados</strong><span>Equipe com formação e atualização constante.</span></div>
+    </div>
+    <div class="strip-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3.5 5 6.2v5c0 4.4 3 7.9 7 9.3 4-1.4 7-4.9 7-9.3v-5L12 3.5Z" stroke="currentColor" stroke-width="1.7"/></svg>
+      <div><strong>Ambiente acolhedor</strong><span>Espaço pensado para o seu conforto.</span></div>
+    </div>
+    <div class="strip-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <div><strong>Planos personalizados</strong><span>Cada tratamento se adapta ao seu objetivo.</span></div>
+    </div>
+    <div class="strip-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 18.5 10 12l3.5 3.5L20 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><strong>Avaliação inicial gratuita</strong><span>Para entender a melhor abordagem para você.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Vamos cuidar de você?</h2>
+      <p>Agende uma avaliação inicial gratuita pelo WhatsApp.</p>
+      <a class="btn" href="https://wa.me/5511987650004?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span><strong>Clínica Vitta</strong><br>Rua das Palmeiras, 128 · Belo Horizonte, MG</span>
+      <span>Seg a sáb, 8h às 18h<br>(11) 98765-0004</span>
+    </div>
+    <span>Projeto demonstrativo de portfólio, desenvolvido por Gustavo Maia.</span>
+    <br>
+    <a class="back-link" href="../../index.html">&larr; Voltar ao portfólio</a>
+  </div>
+</footer>
+
+</body>
+</html>
