@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img">
+<defs>
+  <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F3EEE5"/><stop offset="1" stop-color="#E7E0D3"/>
+  </linearGradient>
+  <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#DED5C4"/><stop offset="1" stop-color="#CFC4AF"/>
+  </linearGradient>
+  <radialGradient id="key" cx="46%" cy="38%" r="58%">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity=".5"/>
+    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig" cx="50%" cy="46%" r="72%">
+    <stop offset=".55" stop-color="#000000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#3A2E22" stop-opacity=".12"/>
+  </radialGradient>
+
+  <!-- leather body: key light upper-left, core shadow lower-right, rim light on the right edge -->
+  <linearGradient id="body" x1=".08" y1="0" x2=".95" y2="1">
+    <stop offset="0" stop-color="#A46B40"/>
+    <stop offset=".26" stop-color="#7C4C2F"/>
+    <stop offset=".76" stop-color="#5A3520"/>
+    <stop offset=".95" stop-color="#7C4C2F" stop-opacity=".9"/>
+  </linearGradient>
+  <linearGradient id="bodyV" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity=".16"/>
+    <stop offset=".18" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset=".82" stop-color="#000000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000000" stop-opacity=".28"/>
+  </linearGradient>
+  <linearGradient id="flap" x1=".1" y1="0" x2=".9" y2="1">
+    <stop offset="0" stop-color="#7C4C2F"/>
+    <stop offset=".55" stop-color="#5A3520"/>
+    <stop offset="1" stop-color="#402312"/>
+  </linearGradient>
+  <linearGradient id="strap" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#5A3520"/>
+    <stop offset=".38" stop-color="#7C4C2F"/>
+    <stop offset=".62" stop-color="#A46B40" stop-opacity=".75"/>
+    <stop offset="1" stop-color="#5A3520"/>
+  </linearGradient>
+  <linearGradient id="brass" x1="0" y1="0" x2=".3" y2="1">
+    <stop offset="0" stop-color="#F0D9A4"/>
+    <stop offset=".34" stop-color="#C39C5E"/>
+    <stop offset=".62" stop-color="#8A6836"/>
+    <stop offset=".85" stop-color="#D8BC80"/>
+    <stop offset="1" stop-color="#7A5A2C"/>
+  </linearGradient>
+
+  <!-- Pebbled leather. Turbulence is used as a bump map and lit, then added to the
+       leather with feComposite/arithmetic: k4 cancels the grain's mean brightness, so
+       it embosses without shifting the colour. All SVG 1.1 core - no blend modes,
+       which silently no-op when a clip or filter isolates the group. -->
+  <filter id="leather" x="-4%" y="-4%" width="108%" height="108%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.34" numOctaves="4" seed="3" result="n"/>
+    <feDiffuseLighting in="n" lighting-color="#ffffff" surfaceScale="1.25" result="lit">
+      <feDistantLight azimuth="228" elevation="56"/>
+    </feDiffuseLighting>
+    <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="43" result="fine"/>
+    <feColorMatrix in="fine" type="saturate" values="0" result="fineg"/>
+    <feComposite in="lit" in2="fineg" operator="arithmetic" k1="0" k2="0.82" k3="0.18" k4="0" result="bump"/>
+    <feComposite in="bump" in2="SourceGraphic" operator="arithmetic"
+                 k1="0" k2="0.22" k3="1" k4="-0.114" result="emb"/>
+    <feComposite in="emb" in2="SourceGraphic" operator="in"/>
+  </filter>
+
+  <filter id="soft" x="-45%" y="-160%" width="190%" height="420%">
+    <feGaussianBlur stdDeviation="26"/>
+  </filter>
+  <filter id="tight" x="-30%" y="-140%" width="160%" height="380%">
+    <feGaussianBlur stdDeviation="7"/>
+  </filter>
+  <filter id="occl" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+</defs>
+
+  <rect width="800" height="690" fill="url(#wall)"/>
+  <rect y="690" width="800" height="310" fill="url(#floor)"/>
+  <rect y="656" width="800" height="68" fill="url(#floor)" opacity=".55" filter="url(#occl)"/>
+  <rect width="800" height="1000" fill="url(#key)"/>
+
+  <ellipse cx="404" cy="802" rx="234.24" ry="32.64" fill="#4A3A28" opacity=".26" filter="url(#soft)"/>
+  <ellipse cx="400" cy="800" rx="157.44" ry="14.399999999999999" fill="#2E2418" opacity=".42" filter="url(#tight)"/>
+<g transform="translate(400 802) scale(1.2) translate(-400 -802) translate(0 -8)">
+
+  <path d="M332 508 C244 574 252 706 296 782" fill="none" stroke="#402312" stroke-width="30" stroke-linecap="round" opacity=".9"/>
+  <path d="M332 508 C244 574 252 706 296 782" fill="none" stroke="url(#strap)" stroke-width="24" stroke-linecap="round"/>
+  <path d="M468 508 C556 574 548 706 504 782" fill="none" stroke="#402312" stroke-width="30" stroke-linecap="round" opacity=".9"/>
+  <path d="M468 508 C556 574 548 706 504 782" fill="none" stroke="url(#strap)" stroke-width="24" stroke-linecap="round"/>
+  <path d="M370 498 Q400 452 430 498" fill="none" stroke="#402312" stroke-width="15" stroke-linecap="round"/>
+  <path d="M370 498 Q400 452 430 498" fill="none" stroke="url(#strap)" stroke-width="10" stroke-linecap="round"/>
+<g filter="url(#leather)">
+  <path d="M262 566 Q262 496 332 496 L468 496 Q538 496 538 566 L538 734 Q538 804 468 804 L332 804 Q262 804 262 734 Z" fill="url(#body)"/>
+  <path d="M262 566 Q262 496 332 496 L468 496 Q538 496 538 566 L538 734 Q538 804 468 804 L332 804 Q262 804 262 734 Z" fill="url(#bodyV)"/>
+  <path d="M262 566 Q262 496 332 496 L468 496 Q538 496 538 566 L538 616 Q400 660 262 616 Z" fill="url(#flap)"/>
+  <path d="M270 620 Q400 664 530 620 L530 640 Q400 684 270 640 Z" fill="#000" opacity=".32" filter="url(#occl)"/></g>
+
+  <path d="M262 566 Q262 496 332 496 L468 496 Q538 496 538 566 L538 616 Q400 660 262 616 Z" fill="none" stroke="#402312" stroke-width="2.8" stroke-linejoin="round" opacity=".55"/>
+  
+  <path d="M288 606 Q400 648 512 606" fill="none" stroke="#402312" stroke-width="3.9" stroke-dasharray="8 8"
+        stroke-linecap="round" opacity=".5"/>
+  <path d="M288 606 Q400 648 512 606" fill="none" stroke="#A46B40" stroke-width="2.3" stroke-dasharray="8 8"
+        stroke-linecap="round" opacity=".8" transform="translate(0 -0.9)"/>
+  
+  <path d="M300 778 L500 778" fill="none" stroke="#402312" stroke-width="3.9" stroke-dasharray="8 8"
+        stroke-linecap="round" opacity=".5"/>
+  <path d="M300 778 L500 778" fill="none" stroke="#A46B40" stroke-width="2.3" stroke-dasharray="8 8"
+        stroke-linecap="round" opacity=".8" transform="translate(0 -0.9)"/>
+  <rect x="374" y="612" width="52" height="38" rx="8" fill="url(#brass)"/>
+  <rect x="382" y="624" width="36" height="7" rx="3.5" fill="#5E4520" opacity=".5"/>
+  <ellipse cx="386" cy="621" rx="9" ry="4" fill="#FFF6DF" opacity=".6"/>
+</g>
+<rect width="800" height="1000" fill="url(#vig)"/>
+</svg>
